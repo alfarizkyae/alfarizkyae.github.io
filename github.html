@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fariz — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #fdfcfa;
+    --surface:   #ffffff;
+    --border:    #e7e4dd;
+    --ink:       #1c1b19;
+    --muted:     #282725;
+    --accent:    #4a3fd6;
+    --accent-soft: #efedfc;
+    --serif: 'Source Serif 4', serif;
+    --sans:  'Inter', sans-serif;
+    --mono:  'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* ── NAV ── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(253,252,250,0.92);
+    backdrop-filter: blur(6px);
+    z-index: 9;
+  }
+  .mark {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .mark span { color: var(--accent); }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.25rem;
+  }
+  nav a {
+    text-decoration: none;
+    font-size: 0.88rem;
+    color: var(--muted);
+    transition: color 0.15s;
+  }
+  nav a:hover { color: var(--ink); }
+
+  .subsection-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1.2rem;
+  }
+
+  /* ── SHORT CUT ── */
+  .achievement-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  .achievement-link:hover h4 {
+    color: var(--accent);
+  }
+  .achievement-link:hover h5 {
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  /* ── ACHIEVEMENT ── */
+  .achievement {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 1.2rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .achievement:first-of-type { border-top: none; padding-top: 0; }
+
+  .achievement-year {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-top: 0.15rem;
+  }
+
+  .achievement h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .achievement p {
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 6rem 3rem 5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .kicker {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.4rem;
+    max-width: 600px;
+  }
+  .hero p.lede {
+    font-size: 1.08rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.2rem;
+  }
+  .btn-row { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #3c33ad; }
+  .btn-ghost { border: 1px solid var(--border); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── SECTION SHARED ── */
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    margin-bottom: 2.2rem;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  .section-head h5 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    background: var(--bg);
+    transition: width 0.3s ease;
+    overflow: hidden;
+  }
+
+  .sidebar.collapsed {
+    width: 0;
+    padding: 0;
+  }
+
+  .sidebar-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--border);
+  }
+
+  .sidebar-name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    text-align: center;
+  }
+
+  .sidebar-role {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ── TOGGLE BUTTON (outside sidebar) ── */
+  .sidebar-toggle {
+    position: fixed;
+    top: 50%;
+    left: 240px;
+    transform: translateY(-50%) translateX(-50%);
+    width: 32px;
+    height: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: left 0.3s ease, color 0.2s;
+  }
+  .sidebar-toggle:hover { color: var(--accent); }
+  .sidebar-toggle.collapsed {
+    left: 0px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main-content {
+    margin-left: 240px;
+    margin-top: 73px;
+    transition: margin-left 0.3s ease;
+  }
+
+  .main-content.expanded {
+    margin-left: 0;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .about-grid p { color: var(--muted); font-size: 0.98rem; }
+  .about-grid p + p { margin-top: 1rem; }
+  .skills-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-content: flex-start;
+  }
+  .skills-list li {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  /* ── PROJECTS ── */
+  .project {
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.5rem;
+  }
+  .project:first-of-type { border-top: none; padding-top: 0; }
+  .project-year {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-top: 0.2rem;
+  }
+  .project h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .project p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 0.7rem;
+  }
+  .project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .project-tags span {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid var(--accent-soft);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+  }
+  .project-link {
+    font-size: 0.84rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  /* ── CV ── */
+  .cv-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+  .cv-card p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    max-width: 380px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .contact-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.3rem 1.4rem;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.15s;
+  }
+  .contact-item:hover { border-color: var(--accent); }
+  .contact-item .label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+  .contact-item .value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 1.25rem 1.5rem; }
+    nav ul { gap: 1.25rem; }
+    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .project { grid-template-columns: 1fr; gap: 0.4rem; }
+    .cv-card { flex-direction: column; align-items: flex-start; }
+  }
+  html {
+  scroll-behavior: smooth;
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <img src="Foto.jpeg" alt="Fariz" class="sidebar-photo" />
+  <h1 class="sidebar-name">Moch Alfarizky</h1>
+  <p class="sidebar-role">Mathematics Enthusiast</p>
+</aside>
+
+<button class="sidebar-toggle" id="sidebarToggle">&#8249;</button>
+
+<header>
+  <span class="mark"><a href="github.html" class="achievement-link">
+      <h4>Alfarizky's Webpage</h4>
+    </a></span>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="main-content">
+
+  <div class="hero">
+    <span class="kicker">Moch Alfarizky Harya Putra</span>
+    <h1>Hello!</h1>
+    <p class="lede">I'm Alfarizky, currently a student at the University of Sydney with major in Mathematics and Statistics</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">View projects</a>
+      <a href="#cv" class="btn btn-ghost">Download CV</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <a href="about.html" class="achievement-link">
+        <h5>About</h5></a>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a Sophomore university student studying Mathematics and Statistics at the University of Sydney, mainly focused on Euclidean Geometry and Combinatorics.</p>
+      </div>
+      <ul class="skills-list">
+        <li>Python</li>
+        <li>Java</li>
+        <li>LaTeX</li>
+        <li>Number Theory</li>
+        <li>Euclidean Geometry</li>
+        <li>Geometric Combinatorics</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="project">
+      <span class="project-year">2024 - now</span>
+      <div>
+        <a href="https://drive.google.com/drive/u/0/folders/17U_cmJ-6NU6NZFpO8wsYezbSb9L61yQ2" class="achievement-link" target="_blank">
+        <h4>Contest Archive</h4></a>
+        <p>A collection of past papers from Indonesian and international Olympiads. contains a comprehensive solution and problem from the local university and official contest in indonesia.</p>
+        <div class="project-tags"><span>Latex</span><span>Mathematics</span><span>Mathematical Documentation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>CV</h2>
+    </div>
+    <div class="cv-card">
+      <p>A full overview of my education, coursework, and project experience, in PDF format.</p>
+      <a href="Moch Alfarizky Harya Putra - CV Baru.pdf" class="btn btn-primary" download>Download CV</a>
+    </div>
+    <div class="achievements">
+      <h3 class="subsection-title">Education</h3>
+      <div class="achievement">
+        <span class="achievement-year">2024</span>
+        <div>
+          <h4>University of Sydney</h4>
+          <p>Bachelor of Science - Mathematics and Statistic</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2025</span>
+        <div>
+          <h4>MAN 2 Kota Malang</h4>
+          <p>Natural Science and Mathematics</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="achievements">
+      <h3 class="subsection-title">Experience</h3>
+      <div class="achievement">
+        <span class="achievement-year">2024 - Now</span>
+        <div>
+          <h4>Problem Setter and Project Member at Kontes Terbuka Olimpiade Matematika</h4>
+          <p>I helped the team of KTOM to create the 5th book, Control the quality of the problem and solution from the 2022 monthly contest. Furthermore, i constantly proposing problem with its solution to be used in the monthly contest.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2025 - Now</span>
+        <div>
+          <h4>Math Olympiad Tutor at New Education Center</h4>
+          <p>Mathematics Tutor dedicated to helping Junior high school students build strong analytical and problem-solving skills for Mathematics olympiad. Has been tutoring with more than 100 student for more than 1 year.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2025 - 2026</span>
+        <div>
+          <h4>Math Olympiad Tutor at Sekolah Medalis</h4>
+          <p>Olympiad tutor dedicated to supporting student of SMAIT Baitul Jannah Lampung to prepare for National Science Competition for 5 months starting from October 2025 to March 2026.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2025</span>
+        <div>
+          <h4>Judge and Commitee of MORPH Competition by MAN 2 Kota Malang</h4>
+          <p>Designed original mathematics competition problems that emphasized creativity, logical reasoning, and rigorous problem-solving.</p>
+        </div>
+      </div>
+    </div>
+    <div class="achievement">
+        <span class="achievement-year">2022 - 2025</span>
+        <div>
+          <h4>Member of Mathematics Olympiad Club at MAN 2 Kota Malang</h4>
+          <p>Representative for National Science Olympiad (OSN) in mathematics 2023,2024 .</p>
+        </div>
+      </div>
+
+    <div class="achievements">
+      <h3 class="subsection-title">Miscellaneous Achievements</h3>
+      <div class="achievement">
+        <span class="achievement-year">2025</span>
+        <div>
+          <a href="olympiad1.html" class="achievement-link">
+          <h4>Simon Marais Mathematics Competition — Top Quarter (25%)</h4></a>
+          <p>Ranked top 3 of individual section in the University of Sydney with 17 points.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2025</span>
+        <div>
+          <a href="olympiad2.html" class="achievement-link">
+          <h4>International Gamma Mathematics Olympiad — Bronze Medalist</h4></a>
+          <p>a competition with international Mathematics Olympiad (IMO) difficulties. Ranked 30 out of 330+ participant.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2024</span>
+        <div>
+          <a href="olympiad3.html" class="achievement-link">
+          <h4>Kompetisi Matematika (KOMET) — 1st Winner</h4></a>
+          <p>a competition held by Student Association of the Mathematics Study Program 'Integral,' Faculty of Science and Technology, State Islamic University Maulana Malik Ibrahim Malang.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2024</span>
+        <div>
+          <a href="olympiad4.html" class="achievement-link">
+          <h4>Olimpiade Matematika Vektor Nasional (OMVN) — 1st Winner</h4></a>
+          <p>Issued by Student Association of the Mathematics Department, Malang State University</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2024</span>
+        <div>
+          <a href="olympiad5.html" class="achievement-link">
+          <h4>Ajang Potensi Matematika (APOTEMA) — 2nd Winner</h4></a>
+          <p>Issued by Student Association of the Mathematics Education Program, State Islamic University Sayyid Ali Rahmatullah Tulungagung.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2024</span>
+        <div>
+          <a href="olympiad6.html" class="achievement-link">
+          <h4>Olimpiade Matematika (ARITMATIKA) — 2nd Winner</h4></a>
+          <p>Issued by Student Association of Mathematics Education, Faculty of Teacher Training and Education, Universitas Sebelas Maret (UNS).</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2024</span>
+        <div>
+          <a href="olympiad7.html" class="achievement-link">
+          <h4>Matriks Mathematics Olympiad (MMO) — 2nd Winner</h4></a>
+          <p>Issued by Student Association of the Mathematics Education Department 'MATRIKS,' University of Muhammadiyah Malang.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2023</span>
+        <div>
+          <a href="olympiad8.html" class="achievement-link">
+          <h4>Olimpiade Matematika ITS (OMITS) — 3rd Winner</h4></a>
+          <p>Issued by Student Association of the Mathematics Program, Sepuluh Nopember Institute of Technology.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2022</span>
+        <div>
+          <a href="olympiad9.html" class="achievement-link">
+          <h4>Olimpiade Matematika (OPTIKA) — 2nd Winner</h4></a>
+          <p>Issued by Student Association of the Mathematics Education Program, Syarif Hidayatullah State Islamic University Jakarta.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2022</span>
+        <div>
+          <a href="olympiad10.html" class="achievement-link">
+          <h4>Kompetisi Matematika UIN Maliki (KOMIK) — 3rd Runner up</h4></a>
+          <p>Issued by Student Association of the Mathematics Education Program, Maulana Malik Ibrahim State Islamic University.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2022</span>
+        <div>
+          <a href="olympiad11.html" class="achievement-link">
+          <h4>Mathematics Competition Revolution (MCR) — 3rd Runner up</h4></a>
+          <p>Issued by Student Association of Mathematics Education Department, UNESA.</p>
+        </div>
+      </div>
+      <div class="achievement">
+        <span class="achievement-year">2022</span>
+        <div>
+          <a href="olympiad12.html" class="achievement-link">
+          <h4>Olimpiade Matematika (ARITMATIKA) — 3rd Runner up</h4></a>
+          <p>Issued by Student Association of Mathematics Education, Faculty of Teacher Training and Education, Sebelas Maret University (UNS).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <a href="mailto:alfarizky2280@gmail.com" class="contact-item">
+        <div class="label">Email</div>
+        <div class="value">alfarizky2280@gmail.com</div>
+      </a>
+      <a href="https://www.instagram.com/alfarizkyae" target="_blank" class="contact-item">
+        <div class="label">Instagram</div>
+        <div class="value">alfarizkyae</div>
+      </a>
+      <a href="https://www.linkedin.com/in/moch-alfarizky-harya-putra-288286318/" target="_blank" class="contact-item">
+        <div class="label">LinkedIn</div>
+        <div class="value">Moch Alfarizky Harya Putra</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>"Life is precious, protect it at all cost"<br>Alfarizky · 2026</footer>
+  
+
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('sidebarToggle');
+  const main = document.querySelector('.main-content');
+
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    main.classList.toggle('expanded');
+    toggle.classList.toggle('collapsed');
+
+    if (sidebar.classList.contains('collapsed')) {
+      toggle.innerHTML = '&#8250;';
+    } else {
+      toggle.innerHTML = '&#8249;';
+    }
+  });
+</script>
+
+</body>
+</html>
