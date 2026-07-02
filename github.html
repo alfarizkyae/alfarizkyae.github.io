@@ -407,6 +407,50 @@
     .project { grid-template-columns: 1fr; gap: 0.4rem; }
     .cv-card { flex-direction: column; align-items: flex-start; }
   }
+  /* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.contact-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.contact-item .label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+.contact-item .value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* individual card colors */
+.contact-item:nth-child(1) { background: #fff0f0; border-color: #ffb3b3; }
+.contact-item:nth-child(1) .label { color: #e03131; }
+.contact-item:nth-child(1):hover { border-color: #e03131; }
+
+.contact-item:nth-child(2) { background: #fff8e7; border-color: #ffd699; }
+.contact-item:nth-child(2) .label { color: #e67700; }
+.contact-item:nth-child(2):hover { border-color: #e67700; }
+
+.contact-item:nth-child(3) { background: #eef6ff; border-color: #a5c8ff; }
+.contact-item:nth-child(3) .label { color: #1971c2; }
+.contact-item:nth-child(3):hover { border-color: #1971c2; }
   html {
   scroll-behavior: smooth;
   }
