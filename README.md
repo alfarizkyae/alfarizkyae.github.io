@@ -8,7 +8,7 @@ Personal portfolio website of **Moch Alfarizky Harya Putra**, built with HTML an
 
 ## About
 
-I'm a Mathematics and Statistics student at the **University of Sydney**, with a focus on Euclidean Geometry and Combinatorics. This site serves as my personal portfolio, showcasing my academic background, projects, and competition achievements.
+I'm a Mathematics and Statistics student at the **University of Sydney**, My main interest on Euclidean Geometry and Combinatorics. This site serves as my personal portfolio, showcasing my academic background, projects, and competition achievements.
 
 ---
 
